@@ -47,7 +47,6 @@ if [ -n "${PUID}" ] && [ "${PUID}" != "$(id -u ejt)" ]; then
 fi
 
 # Timezone
-id
 echo "Setting timezone to ${TZ}..."
 ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime
 echo ${TZ} > /etc/timezone
@@ -121,4 +120,4 @@ EOL
 echo "Fixing perms..."
 chown -R ejt:ejt /data "${EJTSERVER_PATH}"
 
-exec su-exec ejt:ejt "$@"
+/usr/local/bin/ejtserver start-launchd
