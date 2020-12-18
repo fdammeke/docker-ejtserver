@@ -100,8 +100,6 @@ for EJTSERVER_LICENSE in $(echo ${EJTSERVER_LICENSES} | tr "," "\n"); do
 done
 unset EJTSERVER_LICENSES
 
-sleep 60
-
 # Configure
 echo "Configuring license server..."
 cat > ${EJTSERVER_PATH}/bin/ejtserver.vmoptions <<EOL
