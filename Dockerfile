@@ -38,7 +38,8 @@ RUN touch /data/users.txt /data/ip.txt\
   && ln -sf /data/ip.txt /opt/ejtserver/ip.txt \
   && ln -sf /data/users.txt /opt/ejtserver/users.txt \
   && chown -R ejt:0 /data /opt/ejtserver \
-  && chmod 771 /opt/ejtserver /data
+  && chmod 664 /opt/ejtserver/log4j.properties
+  && chmod 771 /opt/ejtserver /opt/ejtserver/log /data
 
 USER 1001
 

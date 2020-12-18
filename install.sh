@@ -54,4 +54,4 @@ echo "Installing ejtserver ${EJTSERVER_VERSION}..."
 rm -rf ${EJTSERVER_PATH}/*
 tar -xzf "/data/${EJTSERVER_TARBALL}" --strip 1 -C ${EJTSERVER_PATH}
 chmod a+x ${EJTSERVER_PATH}/bin/admin ${EJTSERVER_PATH}/bin/ejtserver*
-rm -f ${EJTSERVER_PATH}/*.txt
+rm -f ${EJTSERVER_PATH}/*.txt "/data/${EJTSERVER_TARBALL}"
