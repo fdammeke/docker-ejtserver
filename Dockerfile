@@ -28,11 +28,17 @@ RUN chmod a+x /entrypoint.sh \
 
 RUN groupadd -f -g 1001 ejt \
   && useradd -o -s /bin/bash -d /data -u 1001 -g ejt -m ejt \
-  && mkdir -p /data /opt/ejtserver \
+  && mkdir -p /data /opt/ejtserver
+
+COPY ejtserver/ /opt/ejtserver/
+
+RUN touch /data/users.txt /data/ip.txt\
   && chown -R ejt:0 /data /opt/ejtserver \
   && chmod 771 /opt/ejtserver \
   && ln -sfn /opt/ejtserver/bin/admin /usr/local/bin/admin \
-  && ln -sfn /opt/ejtserver/bin/ejtserver /usr/local/bin/ejtserver
+  && ln -sfn /opt/ejtserver/bin/ejtserver /usr/local/bin/ejtserver \
+  && ln -sf /data/ip.txt /opt/ejtserver/ip.txt \
+  && ln -sf /data/users.txt /opt/ejtserver/users.txt
 
 USER 1001
 
