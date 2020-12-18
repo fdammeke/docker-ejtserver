@@ -28,17 +28,17 @@ RUN chmod a+x /entrypoint.sh /install.sh \
   && chmod g+w /etc/
 
 RUN groupadd -f -g 1001 ejt \
-  && useradd -o -s /bin/bash -d /data -u 1001 -g ejt -m ejt \
+  && useradd -o -s /bin/bash -d /opt/ejtserver -u 1001 -g ejt -m ejt \
   && mkdir -p /data /opt/ejtserver \
   && /install.sh
 
-RUN touch /data/users.txt /data/ip.txt\
+RUN touch /data/users.txt /data/ip.txt \
   && ln -sfn /opt/ejtserver/bin/admin /usr/local/bin/admin \
   && ln -sfn /opt/ejtserver/bin/ejtserver /usr/local/bin/ejtserver \
   && ln -sf /data/ip.txt /opt/ejtserver/ip.txt \
   && ln -sf /data/users.txt /opt/ejtserver/users.txt \
   && chown -R ejt:0 /data /opt/ejtserver \
-  && chmod 664 /opt/ejtserver/log4j.properties \
+  && chmod 664 /opt/ejtserver/log4j.properties /data/users.txt /data/ip.txt /opt/ejtserver/bin/ejtserver.vmoptions \
   && chmod 771 /opt/ejtserver /opt/ejtserver/log /data
 
 USER 1001
